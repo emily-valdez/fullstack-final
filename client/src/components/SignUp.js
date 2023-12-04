@@ -3,8 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -18,7 +17,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Reading Buddy
+        Name of Website
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -26,7 +25,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -60,25 +58,15 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  autoComplete="user-name"
+                  name="userName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="userName"
+                  label="User Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -103,9 +91,14 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="Check this box just for the hell of it."
+                <TextField
+                  required
+                  fullWidth
+                  name="confirmpassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confirmpassword"
+                  autoComplete="confirm-password"
                 />
               </Grid>
             </Grid>
