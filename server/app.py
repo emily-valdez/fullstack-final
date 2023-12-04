@@ -15,7 +15,7 @@ from config import app, db, api
 
 @app.route('/')
 def index():
-    return '<h1>Backend Project Server</h1>'
+    return '<button>Please do not touch my backend.</button>'
 
 
 if __name__ == '__main__':
