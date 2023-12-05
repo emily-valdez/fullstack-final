@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 import ToggleColorMode from "./Colormode";
 
 
@@ -11,7 +11,8 @@ function App() {
  
   return (
     <div>
-      <SignUp />
+      <ToggleColorMode />
+      <SignIn />
       
     </div>
   
