@@ -24,9 +24,7 @@ class User(db.Model, SerializerMixin):
     #password_hash
     
     # Add relationships
-    books = db.relationship(
-        'Book', secondary=users_books, back_populates='users'
-    )
+    books = db.relationship('Book', secondary=users_books, back_populates='users')
     
     # Add validations
     def validate_username(self, key, username):
@@ -48,15 +46,13 @@ class Book(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String)
     year = db.Column(db.Integer)
-    author_id = db.Column(db.String, db.ForeignKey('authors.id'))
     heart_count =db.Column(db.Integer)
     pepper_count =db.Column(db.Integer)
+    author_id = db.Column(db.String, db.ForeignKey('authors.id'))
     
     # Add relationships
-    users = db.relationship(
-        'User', secondary=users_books, back_populates='users'
-    )
-    author = db.relationship('Author', back_populates="books")
+    users = db.relationship('User', secondary=users_books, back_populates='books')
+    authors = db.relationship('Author', back_populates="books")
     
     # Add validations
     def validate_title(self, key, title):
@@ -86,7 +82,7 @@ class Author(db.Model, SerializerMixin):
     tiktok = db.Column(db.String)
     
     # Add relationships
-    books = db.relationship('Book')
+    books = db.relationship('Book', back_populates="author")
         
     def __repr__(self):
         return f'<Author {self.id}, {self.name}, {self.publisher}, {self.tiktok}>'
