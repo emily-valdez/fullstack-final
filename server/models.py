@@ -25,7 +25,7 @@ class User(db.Model, SerializerMixin):
     
     # Add relationships
     books = db.relationship(
-        'Book', secondary=users_books, back_populates='users', cascade='all, delete-orphhan'
+        'Book', secondary=users_books, back_populates='users'
     )
     
     # Add validations
@@ -54,7 +54,7 @@ class Book(db.Model, SerializerMixin):
     
     # Add relationships
     users = db.relationship(
-        'User', secondary=users_books, back_populates='users', cascade='all, delete-orphhan'
+        'User', secondary=users_books, back_populates='users'
     )
     author = db.relationship('Author', back_populates="books")
     
