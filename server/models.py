@@ -35,9 +35,11 @@ class User(db.Model, SerializerMixin):
     #     return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
     
     # Add relationships
-    books = db.Relationship('Book', secondary=users_books, back_populates='users')
+    users_books = db.Relationship('UserBook', back_populates = 'user', cascade = 'all, delete-orphan')
+    books = association_proxy('users_books', 'books')
     
     # Add serialization rules
+    serialize_rules = ('-users_books.user', )
     
     # Add validations
     def validate_username(self, key, username):
@@ -62,10 +64,12 @@ class Book(db.Model, SerializerMixin):
     author_id = db.Column(db.String, db.ForeignKey('authors.id'))
     
     # Add relationships
-    users = db.Relationship('User', secondary=users_books, back_populates='books')
+    users_books = db.Relationship('UserBook', back_populates = 'book', cascade = 'all, delete-orphan')
+    users = association_proxy('users_books', 'users')
     authors = db.Relationship('Author', back_populates="books")
     
     # Add serialization rules
+    serialize_rules = ('-users_books.book', '-authors.books')
     
     # Add validations
     def validate_title(self, key, title):
@@ -81,7 +85,7 @@ class Book(db.Model, SerializerMixin):
             raise ValueError('Year must be four numbers.')
         
     def __repr__(self):
-        return f'<Books {self.id}, {self.title}, {self.year}>'
+        return f'<Book {self.id}, {self.title}, {self.year}>'
     
     
 class Author(db.Model, SerializerMixin):
@@ -93,9 +97,10 @@ class Author(db.Model, SerializerMixin):
     tiktok = db.Column(db.String)
     
     # Add relationships
-    books = db.Relationship('Book', back_populates="author")
+    books = db.Relationship('Book', back_populates="authors")
     
     # Add serialization rules
+    serialize_rules = (-'books.author')
         
     def __repr__(self):
         return f'<Author {self.id}, {self.name}, {self.publisher}, {self.tiktok}>'
