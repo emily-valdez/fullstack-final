@@ -2,7 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 
-from config import db, metadata, bcrypt
+from config import db, metadata
 
 # Association table for relationship between users and books
 users_books = db.Table(
@@ -100,7 +100,7 @@ class Author(db.Model, SerializerMixin):
     books = db.Relationship('Book', back_populates="authors")
     
     # Add serialization rules
-    serialize_rules = (-'books.author')
+    serialize_rules = ('-books.authors')
         
     def __repr__(self):
         return f'<Author {self.id}, {self.name}, {self.publisher}, {self.tiktok}>'
@@ -114,7 +114,7 @@ class UserBook(db.Model, SerializerMixin):
     
     # Add relationships
     user = db.Relationship('User', back_populates = 'users_books')
-    book = db.Relationship('Book', back_populates = 'user_books')
+    book = db.Relationship('Book', back_populates = 'users_books')
     
     # Add serialization rules
     serialize_rules = ('-user.users_books', '-book.users.books', )
