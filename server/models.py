@@ -1,8 +1,9 @@
+# from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 
-from config import db, metadata
+from config import db, metadata #,bcrypt
 
 # Association table for relationship between users and books
 users_books = db.Table(
@@ -18,7 +19,7 @@ users_books = db.Table(
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     # _password_hash = db.Column(db.String)
     
@@ -35,7 +36,7 @@ class User(db.Model, SerializerMixin):
     #     return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
     
     # Add relationships
-    users_books = db.Relationship('UserBook', back_populates = 'user', cascade = 'all, delete-orphan')
+    users_books = db.relationship('UserBook', back_populates='user', cascade='all, delete-orphan')
     books = association_proxy('users_books', 'books')
     
     # Add serialization rules
@@ -56,20 +57,20 @@ class User(db.Model, SerializerMixin):
 class Book(db.Model, SerializerMixin):
     __tablename__ = 'books'
     
-    id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, unique=True)
     year = db.Column(db.Integer)
     heart_count =db.Column(db.Integer)
     pepper_count =db.Column(db.Integer)
     author_id = db.Column(db.String, db.ForeignKey('authors.id'))
     
     # Add relationships
-    users_books = db.Relationship('UserBook', back_populates = 'book', cascade = 'all, delete-orphan')
+    users_books = db.relationship('UserBook', back_populates='book', cascade='all, delete-orphan')
     users = association_proxy('users_books', 'users')
-    authors = db.Relationship('Author', back_populates="books")
+    authors = db.relationship('Author', back_populates='books')
     
     # Add serialization rules
-    serialize_rules = ('-users_books.book', '-authors.books')
+    serialize_rules = ('-users_books.book', '-authors.books', )
     
     # Add validations
     def validate_title(self, key, title):
@@ -91,16 +92,16 @@ class Book(db.Model, SerializerMixin):
 class Author(db.Model, SerializerMixin):
     __tablename__ = 'authors'
     
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, unique=True)
     publisher = db.Column(db.String)
     tiktok = db.Column(db.String)
     
     # Add relationships
-    books = db.Relationship('Book', back_populates="authors")
+    books = db.relationship('Book', back_populates='authors')
     
     # Add serialization rules
-    serialize_rules = ('-books.authors')
+    serialize_rules = ('-books.authors', )
         
     def __repr__(self):
         return f'<Author {self.id}, {self.name}, {self.publisher}, {self.tiktok}>'
@@ -108,13 +109,13 @@ class Author(db.Model, SerializerMixin):
 class UserBook(db.Model, SerializerMixin):
     __tablename__ = 'users_books'
     
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
     
     # Add relationships
-    user = db.Relationship('User', back_populates = 'users_books')
-    book = db.Relationship('Book', back_populates = 'users_books')
+    user = db.relationship('User', back_populates='users_books')
+    book = db.relationship('Book', back_populates='users_books')
     
     # Add serialization rules
     serialize_rules = ('-user.users_books', '-book.users.books', )
