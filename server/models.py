@@ -23,26 +23,14 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String)
     # _password_hash = db.Column(db.String)
     
-    # @property
-    # def password_hash(self):
-    #     return self._password_hash
-
-    # @password_hash.setter
-    # def password_hash(self, password):
-    #     password_hash = bcrypt.generate_password_hash(password.encode('utf-8'))
-    #     self._password_hash = password_hash.decode('utf-8')
-
-    # def authenticate(self, password):
-    #     return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
-    
-    # Add relationships
+    # relationships
     users_books = db.relationship('UserBook', back_populates='user', cascade='all, delete-orphan')
     books = association_proxy('users_books', 'books')
     
-    # Add serialization rules
+    # serialization rules
     serialize_rules = ('-users_books.user', )
     
-    # Add validations
+    # validations
     def validate_username(self, key, username):
         if len(username) > 1:
             return username
@@ -64,15 +52,15 @@ class Book(db.Model, SerializerMixin):
     pepper_count =db.Column(db.Integer)
     author_id = db.Column(db.String, db.ForeignKey('authors.id'))
     
-    # Add relationships
+    # relationships
     users_books = db.relationship('UserBook', back_populates='book', cascade='all, delete-orphan')
     users = association_proxy('users_books', 'users')
     authors = db.relationship('Author', back_populates='books')
     
-    # Add serialization rules
+    # serialization rules
     serialize_rules = ('-users_books.book', '-authors.books', )
     
-    # Add validations
+    # validations
     def validate_title(self, key, title):
         if len(title) >= 1:
             return title
@@ -97,10 +85,10 @@ class Author(db.Model, SerializerMixin):
     publisher = db.Column(db.String)
     tiktok = db.Column(db.String)
     
-    # Add relationships
+    # relationships
     books = db.relationship('Book', back_populates='authors')
     
-    # Add serialization rules
+    # serialization rules
     serialize_rules = ('-books.authors', )
         
     def __repr__(self):
@@ -113,11 +101,11 @@ class UserBook(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
     
-    # Add relationships
+    # relationships
     user = db.relationship('User', back_populates='users_books')
     book = db.relationship('Book', back_populates='users_books')
     
-    # Add serialization rules
+    # serialization rules
     serialize_rules = ('-user.users_books', '-book.users.books', )
     
     def __repr__(self):
