@@ -47,7 +47,7 @@ class User(db.Model, SerializerMixin):
         if len(username) > 1:
             return username
         else:
-            raise ValueError('Username must be longer than one character.')
+            raise ValueError('Username must be at least one character.')
     
     def __repr__(self):
         return f'<User {self.id}, {self.username}>'
@@ -121,4 +121,4 @@ class UserBook(db.Model, SerializerMixin):
     serialize_rules = ('-user.users_books', '-book.users.books', )
     
     def __repr__(self):
-        return f'<UserBook {self.id}'
+        return f'<UserBook {self.id}>'
