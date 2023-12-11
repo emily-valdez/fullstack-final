@@ -15,7 +15,7 @@ function AuthorTile({id, name, publisher, tiktok}) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         title={name}
-        subheader="Publisher:"
+        subheader={publisher}
       />
       <CardMedia
         component="img"
@@ -25,7 +25,7 @@ function AuthorTile({id, name, publisher, tiktok}) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Static author language
+          TikTok: {tiktok}
         </Typography>
       </CardContent>
     </Card>

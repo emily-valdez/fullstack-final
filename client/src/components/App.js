@@ -3,18 +3,17 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header"
 import Books from "./Books"
-import Authors from "./Authors"
 
 
 function App() {
- 
 
   return (
     <div>
+      <input type="file" />
       <Header />
       <Books />
+       
     </div>
-  
   )
 }
 
