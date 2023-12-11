@@ -5,16 +5,15 @@ from random import randint, choice as rc
 
 # Local imports
 from app import app
-from models import db, Book, Author, User, users_books
+from models import db, Book, Author, User, UserBook
 
 if __name__ == '__main__':
     with app.app_context():
         print("Clearing data")
-        db.session.query(users_books).delete
-        db.session.commit()
         Book.query.delete()
         Author.query.delete()
         User.query.delete()
+        UserBook.query.delete()
     
         print("Starting seed...")
         print("Populating authors")
@@ -23,8 +22,8 @@ if __name__ == '__main__':
         authors = [sjm, abby]
     
         print("Printing books")
-        sjm_acotar = Book(title="A Court of Thrones and Roses", year="2015", author_id="1", heart_count="2", pepper_count="5", author=sjm)
-        abby_yourstruly = Book(title="Yours Truly", year="2023", author_id="2", heart_count="6", pepper_count="1", author=abby)
+        sjm_acotar = Book(title="A Court of Thrones and Roses", year="2015", author_id="1", heart_count="2", pepper_count="5")
+        abby_yourstruly = Book(title="Yours Truly", year="2023", author_id="2", heart_count="6", pepper_count="1")
         books = [sjm_acotar, abby_yourstruly]
     
 
