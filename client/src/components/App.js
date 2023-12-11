@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import SignIn from "./SignIn";
-import ToggleColorMode from "./Colormode";
-
-
+import Header from "./Header"
+import Books from "./Books"
 
 
 function App() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    fetch('/books')
+      .then((r) => r.json())
+      .then((books) => setBooks(books));
+  }, []);
  
   return (
     <div>
-      <ToggleColorMode />
-      <SignIn />
-      
+      <Header />
+      <Books />
     </div>
   
   )
