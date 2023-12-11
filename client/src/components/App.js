@@ -3,17 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header"
 import Books from "./Books"
+import Authors from "./Authors"
 
 
 function App() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    fetch('/books')
-      .then((r) => r.json())
-      .then((books) => setBooks(books));
-  }, []);
  
+
   return (
     <div>
       <Header />

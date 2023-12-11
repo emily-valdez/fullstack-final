@@ -1,5 +1,6 @@
 import React from "react";
 import App from "./components/App";
+import Authors from "./components/Authors"
 import ReactDOM from "react-dom";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -15,6 +16,9 @@ const routes = [
     {
         path:"/",
         element: <App/>
+    },{
+        path: "/authors",
+        element: <Authors />
     }
 ]
 

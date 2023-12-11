@@ -1,9 +1,9 @@
 import React from "react";
-// import BookTile from "./BookTile";
+import AuthorTile from "./AuthorTile";
 
 function AuthorList({authors}) {
     const renderAuthorTiles = authors.map(({id, name, publisher, tiktok}) => (
-        <BookTile 
+        <AuthorTile 
             key={id}
             id={id}
             name={name}

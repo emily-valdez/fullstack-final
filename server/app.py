@@ -11,7 +11,7 @@ from models import User, Book, Author, UserBook
 
 @app.route('/')
 def index():
-    return '<button>Please do not touch my backend.</button>'
+    return '<h1>Please do not touch my backend.</h1>'
 
 class Users (Resource):
     def get(self):
