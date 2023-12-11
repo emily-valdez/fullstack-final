@@ -5,16 +5,6 @@ from sqlalchemy.orm import validates
 
 from config import db, metadata #,bcrypt
 
-# Association table for relationship between users and books
-# users_books = db.Table(
-#     'users_books',
-#     metadata,
-#     db.Column('users_id', db.Integer, db.ForeignKey(
-#         'users.id'), primary_key=True),
-#     db.Column('books_id', db.Integer, db.ForeignKey(
-#         'books.id'), primary_key=True)
-# )
-
 # Models
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
