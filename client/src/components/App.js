@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div>
-      <input type="file" />
       <Header />
       <Books />
        

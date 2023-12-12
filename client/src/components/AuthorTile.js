@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 
 
-function AuthorTile({id, name, publisher, tiktok}) {
+function AuthorTile({id, name, publisher, tiktok, author_img}) {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -19,8 +19,8 @@ function AuthorTile({id, name, publisher, tiktok}) {
       />
       <CardMedia
         component="img"
-        height="194"
-        image=""
+        height="450"
+        image={author_img}
         alt="author photo"
       />
       <CardContent>

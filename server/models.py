@@ -41,6 +41,7 @@ class Book(db.Model, SerializerMixin):
     heart_count =db.Column(db.Integer)
     pepper_count =db.Column(db.Integer)
     author_id = db.Column(db.String, db.ForeignKey('authors.id'))
+    book_img = db.Column(db.String)
     
     # relationships
     users_books = db.relationship('UserBook', back_populates='book', cascade='all, delete-orphan')
@@ -74,6 +75,7 @@ class Author(db.Model, SerializerMixin):
     name = db.Column(db.String, unique=True)
     publisher = db.Column(db.String)
     tiktok = db.Column(db.String)
+    author_img = db.Column(db.String)
     
     # relationships
     books = db.relationship('Book', back_populates='authors')
