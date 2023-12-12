@@ -1,6 +1,7 @@
 import React from "react";
 import App from "./components/App";
 import Authors from "./components/Authors"
+import Images from "./components/Images"
 import ReactDOM from "react-dom";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -19,6 +20,9 @@ const routes = [
     },{
         path: "/authors",
         element: <Authors />
+    },{
+        path: "/images",
+        element: <Images />
     }
 ]
 
