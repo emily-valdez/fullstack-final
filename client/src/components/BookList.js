@@ -1,7 +1,7 @@
 import React from "react";
 import BookTile from "./BookTile";
 
-function BookList({books}) {
+function BookList({books, authors}) {
     const renderBookTiles = books.map(({id, title, year, heart_count, pepper_count, author_id, book_img}) => (
         <BookTile 
             key={id}

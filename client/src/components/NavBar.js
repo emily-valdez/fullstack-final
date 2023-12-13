@@ -10,9 +10,11 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import Tooltip from '@mui/material/Tooltip';
+import Avatar from '@mui/material/Avatar';
 
 const pages = ['Books', 'Authors', 'My Bookshelf'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['My Account', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,14 +39,14 @@ function ResponsiveAppBar() {
     <AppBar position="static" style={{background: 'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <MenuBookIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <MenuBookIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1.5 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 2.5,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Segoe UI',
               fontWeight: 700,
@@ -109,7 +111,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            BookTok 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -124,6 +126,11 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+          <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="avatar photo" src="https://res.cloudinary.com/debhztqlv/image/upload/v1702467178/fofoaogzaket7zg2stcn.jpg" />
+              </IconButton>
+            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
