@@ -14,7 +14,8 @@ import Box from '@mui/material/Box';
 function AuthorTile({id, name, publisher, website, author_img}) {
   
   return (
-  <Box sx={{ width: '100%' }}>
+   
+    <Box sx={{ width: '100%' }}>
     <Grid
         container rowSpacing={1} columnSpacing={1}
         direction="column"

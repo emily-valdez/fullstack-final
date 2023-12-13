@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./Header"
+import NavBar from "./NavBar"
 import Books from "./Books"
 
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <NavBar />
       <Books />
        
     </div>

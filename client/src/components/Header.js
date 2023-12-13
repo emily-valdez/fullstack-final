@@ -8,9 +8,9 @@ function Header(){
         <div>
             <div>
                 <div className="header">
-                    <h2 className="Title">
+                    <h1 className="Title">
                     BookTok
-                    </h2>
+                    </h1>
                 </div>
             </div>
         </div>
