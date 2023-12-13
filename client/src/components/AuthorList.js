@@ -2,13 +2,13 @@ import React from "react";
 import AuthorTile from "./AuthorTile";
 
 function AuthorList({authors}) {
-    const renderAuthorTiles = authors.map(({id, name, publisher, tiktok, author_img}) => (
+    const renderAuthorTiles = authors.map(({id, name, publisher, website, author_img}) => (
         <AuthorTile 
             key={id}
             id={id}
             name={name}
             publisher={publisher}
-            tiktok={tiktok}
+            website={website}
             author_img={author_img}
         />
     ));

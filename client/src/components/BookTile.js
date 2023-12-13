@@ -13,19 +13,20 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
 
 
-function BookTile({id, title, year, heart_count, pepper_count, author_id}) {
+function BookTile({id, title, year, heart_count, pepper_count, author_id, book_img}) {
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardHeader
         title={title}
         subheader="Author:"
       />
       <CardMedia
         component="img"
-        height="194"
-        image=""
+        height="250"
+        image={book_img}
         alt="book cover"
+        sx={{objectFit: "contain" }}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

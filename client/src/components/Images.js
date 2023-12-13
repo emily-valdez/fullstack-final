@@ -25,7 +25,7 @@ function ImageUpload() {
         <button onClick={uploadImage}>Upload Image</button>
 
         <Image
-        style={{width:200}} 
+        style={{height:200, width:200}} 
         cloudName="debhztqlv" 
         publicId=""
         />

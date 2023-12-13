@@ -74,7 +74,7 @@ class Author(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
     publisher = db.Column(db.String)
-    tiktok = db.Column(db.String)
+    website = db.Column(db.String)
     author_img = db.Column(db.String)
     
     # relationships

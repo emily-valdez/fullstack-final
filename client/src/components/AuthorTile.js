@@ -7,30 +7,42 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box';
 
 
-function AuthorTile({id, name, publisher, tiktok, author_img}) {
-
+function AuthorTile({id, name, publisher, website, author_img}) {
+  
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
+  <Box sx={{ width: '100%' }}>
+    <Grid
+        container rowSpacing={1} columnSpacing={1}
+        direction="column"
+        justifyContent="left"
+    >
+      <Card sx={{ maxWidth: 345 }}>
+        <CardHeader
         title={name}
         subheader={publisher}
-      />
-      <CardMedia
+        />
+        <CardMedia
         component="img"
-        height="450"
+        height="300"
         image={author_img}
         alt="author photo"
-      />
-      <CardContent>
+        sx={{objectFit: "contain" }}
+        />
+        <CardContent>
         <Typography variant="body2" color="text.secondary">
-          TikTok: {tiktok}
+          Website: {website}
         </Typography>
-      </CardContent>
-    </Card>
-  );
-}
+        </CardContent>
+      </Card>
+    </Grid>
+ </Box>
+ ) 
+} 
+
 
 export default AuthorTile;
 
