@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar"
+import React from "react";
+import UserTile from "./UserTile"
 
-function Users() {
-    const [users, setUsers] = useState([]);
+function UserList({users}) {
+  const renderUserList = users.map(({id, username}) => (
+    <UserTile
+        key={id}
+        id={id}
+        username={username}
+    />
+  ))
 
-    useEffect(() => {
-      fetch('/users')
-        .then((r) => r.json())
-        .then((users) => setUsers(users));
-    }, []);
-
-    return(
-        <main>
-            <NavBar />
-            
-        </main>
-    )
+    return <ul className="users">{renderUserList}</ul>
 }
 
-export default Users;
+export default UserList;

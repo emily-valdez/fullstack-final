@@ -2,7 +2,7 @@ import React from "react";
 import App from "./components/App";
 import Authors from "./components/Authors"
 import Images from "./components/Images"
-import Users from "./components/UserList"
+import Users from "./components/Users"
 import ReactDOM from "react-dom";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
