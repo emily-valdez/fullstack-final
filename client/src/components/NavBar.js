@@ -31,7 +31,7 @@ function NavBar(){
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'flex' },
-                flexGrow: .02,
+                flexGrow: .1,
                 fontFamily: 'Segoe UI',
                 fontWeight: 500,
                 letterSpacing: '.3rem',
@@ -45,7 +45,7 @@ function NavBar(){
               component="a" 
               href="/"
               sx={{ 
-              flexGrow: .015,
+              flexGrow: .15,
               fontFamily: 'Segoe UI', 
               color: 'inherit',
               textDecoration: 'none'
@@ -56,7 +56,7 @@ function NavBar(){
               component="a"
               href="/authors" 
               sx={{ 
-              flexGrow: .015,
+              flexGrow: .15,
               fontFamily: 'Segoe UI',
               color: 'inherit', 
               textDecoration: 'none'
@@ -65,14 +65,35 @@ function NavBar(){
             </Typography>
             <Typography variant="h6" 
               component="a"
-              href="/" 
+              href="/users_books" 
               sx={{
-               flexGrow: .015,
+               flexGrow: 7,
                fontFamily: 'Segoe UI',
                color: 'inherit', 
                textDecoration: 'none'
               }}>
               My Bookshelf
+            </Typography><Typography variant="h6" 
+              component="a"
+              href="/users" 
+              sx={{
+               flexGrow: .15,
+               fontFamily: 'Segoe UI',
+               color: 'inherit', 
+               textDecoration: 'none'
+              }}>
+              All Users
+            </Typography>
+            <Typography variant="h6" 
+              component="a"
+              href="/logout" 
+              sx={{
+               flexGrow: 1,
+               fontFamily: 'Segoe UI',
+               color: 'inherit', 
+               textDecoration: 'none'
+              }}>
+              Logout
             </Typography>
           </Toolbar>
         </Container>
