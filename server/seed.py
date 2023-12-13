@@ -20,15 +20,18 @@ if __name__ == '__main__':
         sjm = Author(name="Sarah J. Maas", publisher="Bloomsbury", website="https://sarahjmaas.com/", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702422783/li8bwpjsnkwmfdwhcvjg.webp")
         abby = Author(name="Abby Jimenez", publisher="Hachette Book Group", website="https://www.authorabbyjimenez.com/", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702423040/j1drc2qiostgccimiyah.webp")
         jar = Author(name="Jennifer L. Armentrout", publisher="Blue Box Press", website="https://jenniferlarmentrout.com/", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702429213/wea7yrpw68jzqx4zakhp.png")
-        
-        authors = [sjm, abby, jar]
+        casey = Author(name="Casey McQuiston", publisher="St. Martin's Griffin", website="https://www.caseymcquiston.com/", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702480987/ffrteclj1jnknjnqol7g.webp")
+        ana = Author(name="Ana Huang", publisher="Bloom Books", website="https://anahuang.com/", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702481501/vupk5dy9cbkzhgxfzwwf.png")
+        authors = [sjm, abby, jar, casey, ana]
     
         print("Printing books...")
         sjm_acotar = Book(title="A Court of Thorns and Roses", year="2015", author_id="1", heart_count="3", pepper_count="2", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702427585/oowhuwcmh1hexnpr5abh.jpg")
         jar_cogb = Book(title="The Crown of Gilded Bones", year="2021", author_id="3", heart_count="5", pepper_count="11", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702428843/cdhdzkwbdbi7tiwnj6nw.jpg")
         sjm_acosf = Book(title="A Court of Silver Flames", year="2022", author_id="1", heart_count="8", pepper_count="9", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702428491/q9swzxrrtlf8gwn9x17z.jpg")
         abby_yourstruly = Book(title="Yours Truly", year="2023", author_id="2", heart_count="6", pepper_count="1", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702428266/l8ppp68msjvxypag3zgk.jpg")
-        books = [sjm_acotar, jar_cogb, sjm_acosf, abby_yourstruly]
+        casey_rwrb = Book(title="Red, White, & Royal Blue", year="2019", author_id="4", heart_count="10", pepper_count="4", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702480702/nvyfkmpveikp0u0htcus.webp")
+        ana_twisted = Book(title="Twisted Love", year="2022", author_id="5", heart_count="8", pepper_count="9", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702481405/bbuwrcmq26rftb5f2wxa.webp")
+        books = [sjm_acotar, jar_cogb, sjm_acosf, abby_yourstruly, casey_rwrb, ana_twisted]
     
         print("Adding users...")
         emily = User(username="morpheus")
