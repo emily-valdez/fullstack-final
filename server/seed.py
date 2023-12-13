@@ -30,9 +30,15 @@ if __name__ == '__main__':
         abby_yourstruly = Book(title="Yours Truly", year="2023", author_id="2", heart_count="6", pepper_count="1", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702428266/l8ppp68msjvxypag3zgk.jpg")
         books = [sjm_acotar, jar_cogb, sjm_acosf, abby_yourstruly]
     
+        print("Adding users...")
+        emily = User(username="morpheus")
+        kassidy = User(username="kassinova")
+        peyton = User(username="nymeria")
+        users =[emily, kassidy, peyton]
 
         db.session.add_all(authors)
         db.session.add_all(books)
+        db.session.add_all(users)
         db.session.commit()
         
         print("Seeding complete!")
