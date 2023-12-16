@@ -36,7 +36,7 @@ class User(db.Model, SerializerMixin):
     books = association_proxy('users_books', 'books')
     
     # serialization rules
-    serialize_rules = ('-users_books.user', )
+    serialize_rules = ('-users_books.user', '-_password_hash', )
     
     # validations
     def validate_username(self, key, username):

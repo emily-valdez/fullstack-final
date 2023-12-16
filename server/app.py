@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from flask import request, make_response, session
-from flask_restful import Api, Resource
-from flask_migrate import Migrate
+from flask_restful import Resource
+# from flask_migrate import Migrate
 
 # Local imports
 from config import app, db, api
@@ -10,16 +10,14 @@ from config import app, db, api
 # Model imports
 from models import User, Book, Author, UserBook
 
-@app.route('/')
-def index():
-    return '<h1>Please do not touch my backend.</h1>'
+
 
 # class Users (Resource):
 #     def get(self):
 #         user_list = [n.to_dict() for n in User.query.all()]
 #         response = make_response (user_list, 200,)
 #         return response
-# api.add_resource(Users, '/users')
+# api.add_resource(Users, '/api/v1/users')
     
 # class UsersById (Resource):
 #     def get(self):
@@ -27,7 +25,7 @@ def index():
 #         if not user:
 #             return make_response ({'Error: User not found.'}, 404)
 #         return make_response(user.to_dict(), 200)
-# api.add_resource(UsersById, '/users/<id>')
+# api.add_resource(UsersById, '/api/v1/users/<int:id>')
 
 class Users(Resource):
     def post(self):
@@ -79,14 +77,14 @@ class BooksById (Resource):
         if not book:
             return make_response ({'Error: Book not found.'}, 404)
         return make_response(book.to_dict(), 200)
-api.add_resource(BooksById, '/books/<id>')
+api.add_resource(BooksById, '/api/v1/books/<int:id>')
         
 class Authors (Resource):
     def get(self):
         author_list = [n.to_dict() for n in Author.query.all()]
         response = make_response (author_list, 200,)
         return response
-api.add_resource(Authors, '/authors')
+api.add_resource(Authors, '/api/v1/authors')
 
 class AuthorsById (Resource):
     def get(self):
@@ -94,7 +92,7 @@ class AuthorsById (Resource):
         if not author:
             return make_response ({'Error: Author not found.'}, 404)
         return make_response(author.to_dict(), 200)
-api.add_resource(AuthorsById, '/authors/<id>')
+api.add_resource(AuthorsById, '/api/v1/authors/<int:id>')
 
 class UsersBooks (Resource):
     def post(self):
@@ -113,7 +111,7 @@ class UsersBooks (Resource):
                 'user_id', 'book_id', 'user', 'book', '-user.users_books', '-book.users_books'
             )), 201
         )
-api.add_resource(UsersBooks, '/users_books')
+api.add_resource(UsersBooks, '/api/v1/users_books')
 
 class UsersBooksById (Resource):
     def delete(self, id):
@@ -123,11 +121,15 @@ class UsersBooksById (Resource):
         db.session.delete(user_book)
         db.session.commit()
         return make_response ("", 204)
-api.add_resource(UsersBooksById, '/users_books/<id>')
+api.add_resource(UsersBooksById, '/api/v1/users_books/<int:id>')
+
+@app.route('/')
+def index():
+    return '<h1>Please do not touch my backend.</h1>'
 
 @app.before_request
 def check_logged_id():
-    if request.endpoint in ['users'] and not session.get('user_id'):
+    if request.endpoint in ['books'] and not session.get('user_id'):
         return make_response({'error': 'Unauthorized. Please login'}, 401)
     
 if __name__ == '__main__':

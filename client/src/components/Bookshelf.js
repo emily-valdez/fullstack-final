@@ -6,7 +6,7 @@ function UserBook() {
     const [userbook, setUserBook] = useState([]);
     
         useEffect(() => {
-            fetch("http://127.0.0.1:5555/users_books")
+            fetch("http://127.0.0.1:5555/api/v1/users_books")
               .then((resp) => resp.json())
               .then((allUserBook) => setUserBook(allUserBook));
           }, []);

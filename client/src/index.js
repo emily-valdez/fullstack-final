@@ -5,6 +5,8 @@ import Images from "./components/Images"
 import Users from "./components/Users"
 import Bookshelf from "./components/Bookshelf";
 import Logout from "./components/Logout";
+import Login from "./components/Login"
+import Register from "./components/Register"
 import ReactDOM from "react-dom";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -35,6 +37,12 @@ const routes = [
     },{
         path: "/users_books",
         element: <Bookshelf />
+    },{
+        path: "/login",
+        element: <Login />
+    },{
+        path: "/register",
+        element: <Register />
     }
 ]
 

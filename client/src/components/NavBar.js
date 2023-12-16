@@ -8,7 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Container from '@mui/material/Container';
 
 function NavBar(){
-  
+ 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{background: 'black'}}>
@@ -86,14 +86,14 @@ function NavBar(){
             </Typography>
             <Typography variant="h6" 
               component="a"
-              href="/logout" 
+              href="/register" 
               sx={{
                flexGrow: 1,
                fontFamily: 'Segoe UI',
                color: 'inherit', 
                textDecoration: 'none'
-              }}>
-              Logout
+              }}> 
+              Register
             </Typography>
           </Toolbar>
         </Container>

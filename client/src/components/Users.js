@@ -6,7 +6,7 @@ function Users({id, username}) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-      fetch('/users')
+      fetch('/avi/v1/users')
         .then((r) => r.json())
         .then((users) => setUsers(users));
     }, []);

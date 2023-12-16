@@ -26,9 +26,6 @@ function BookTile({id, title, year, heart_count, pepper_count, author_id, book_i
           sx={{ 
             maxWidth: 300, 
             maxHeight: 550, 
-            // display: "flex", 
-            // flexWrap: "wrap", 
-            // flexDirection:"row"
             }}>
             <CardHeader
               title={title}

@@ -1,14 +1,19 @@
 import React from "react";
 import NavBar from "./NavBar"
 
-function Logout() {
-
-    return (
-      <div>
-        <NavBar />
-         <h1>Thanks for visiting!</h1>
-      </div>
-    )
-  }
+function Logout({ onLogout }) {
+    function handleLogout() {
+      fetch("/logout", {
+        method: "DELETE",
+      }).then(() => onLogout());
+    }
   
-  export default Logout;
+    return (
+      <header>
+        <button onClick={handleLogout}>Logout</button>
+      </header>
+    );
+  }
+
+  export default Logout
+
