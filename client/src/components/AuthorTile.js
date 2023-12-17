@@ -8,17 +8,21 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+
 
 function AuthorTile({id, name, publisher, website, author_img}) {
+  const cards = [id]
   return(
-    <Box sx={{ width: '100%' }}>
-      <Grid
-          container spacing={1}
-          columns={3}
-          direction="column"
-          // justifyContent="center"
-      >
+      <Box
+          sx={{ 
+            display: 'inline-flex ', 
+            flexWrap: 'wrap',
+            
+          }}
+          >
+        {cards.map((card) => (
+          <Grid item key={card} xs={12} sm={6} md={4}      
+          >  
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
           title={name}
@@ -33,12 +37,13 @@ function AuthorTile({id, name, publisher, website, author_img}) {
           />
           <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {website}
+           {website}
           </Typography>
           </CardContent>
         </Card>
       </Grid>
-  </Box>
-  )
-}
+      ))}
+  </Box> 
+  )}
+
 export default AuthorTile
