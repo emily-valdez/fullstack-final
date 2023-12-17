@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import NavBar from "./NavBar"
@@ -17,7 +17,7 @@ function App() {
       if (resp.ok) {
         resp.json().then((user) => setUser(user))
       } else {
-          resp.json().then(() => navigate('/login'))
+          resp.json().then(() => navigate('/register')) 
           console.log('error')
       }
     })
@@ -34,6 +34,7 @@ function App() {
   if (!user) {
     return <Register setUser={setUser} />
   }
+
 
   return <div>
       <Button variant="contained" onClick={handleLogout}>Logout</Button>

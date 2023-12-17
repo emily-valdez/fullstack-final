@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Box, Button, Container, TextField } from '@mui/material';
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 
-function Register({ setUser }) {
+function Register({setUser}) {
     const [signup, setSignup] = useState(true)
+    const [error, setError] = useState(null)
     const navigate = useNavigate();
 
     const signupSchema = yup.object().shape({
@@ -28,7 +29,7 @@ function Register({ setUser }) {
         },
         validationSchema: signup ? signupSchema : loginSchema,
         onSubmit: (values) => {
-            const endpoint = signup ? '/users' : '/login'
+            const endpoint = signup ? '/users' : '/register'
             fetch(endpoint, {
                 method: 'POST',
                 headers: {
@@ -39,11 +40,12 @@ function Register({ setUser }) {
                 if (resp.ok) {
                     resp.json().then(({ user }) => {
                         setUser(user)
+                        setError(null)
                         navigate("/")
                     })
                 } else { 
-                    
-                    console.log('errors? handle them')
+                    resp.json()
+                    .then(({error}) => setError(error))
                 }
             })
         }

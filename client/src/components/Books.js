@@ -5,7 +5,7 @@ function Books() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch("/api/v1/books")
+        fetch("/books")
           .then((resp) => resp.json())
           .then((allBooks) => setBooks(allBooks));
       }, []);

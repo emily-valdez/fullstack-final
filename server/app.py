@@ -37,12 +37,7 @@ class Users(Resource):
         return make_response({'user': user.to_dict()}, 201 )
 api.add_resource(Users, '/api/v1/users')  
     
-class Books (Resource):
-    def get(self):
-        book_list = [n.to_dict() for n in Book.query.all()]
-        response = make_response(book_list, 200)
-        return response
-api.add_resource(Books, '/api/v1/books')
+
 
 @app.route('/api/v1/authorized')
 def authorized():
@@ -70,6 +65,12 @@ def login():
     except:
         return make_response({'error': 'username incorrect'}, 401)
     
+class Books (Resource):
+    def get(self):
+        book_list = [n.to_dict() for n in Book.query.all()]
+        response = make_response(book_list, 200)
+        return response
+api.add_resource(Books, '/api/v1/books')
 
 class BooksById (Resource):
     def get(self):
