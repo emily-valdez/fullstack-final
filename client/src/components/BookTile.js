@@ -10,51 +10,54 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid'
 
 function BookTile({id, title, year, heart_count, pepper_count, author_id, book_img}) {
-
+  const cards = [id]
   return (
-    <div style={{ width: '100%' }}>
       <Box sx={{ 
-        width: '100%',
-        display: 'flex',
+        display: 'inline-flex ', 
         flexWrap: 'wrap',
-        // flexDirection: 'row',
-        // alignContent: 'left'
+        justifyContent: 'space-evenly',
         }}>
-          <Card variant="outlined" 
-          sx={{ 
-            maxWidth: 300, 
-            maxHeight: 550, 
-            }}>
-            <CardHeader
-              title={title}
-              subheader="Author:"
-            />
-            <CardMedia
-              component="img"
-              height="300"
-              image={book_img}
-              alt="book cover"
-              sx={{objectFit: "contain" }}
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                User Ratings: {heart_count} likes and {pepper_count} spicy
-              </Typography>
-            </CardContent>
-              <IconButton aria-label="Loved it!">
-                <FavoriteBorderIcon />
-              </IconButton>
-              <IconButton aria-label="Spicy">
-                <LocalFireDepartmentIcon />
-              </IconButton>
-              <IconButton aria-label="Add to bookshelf">
-                <AddIcon />
-              </IconButton>
-          </Card>
-      </Box>
-    </div>
+        {cards.map((card) => (
+          <Grid item key={card} xs={12} sm={6} md={4}      
+          >  
+            <Card variant="outlined" 
+            sx={{ 
+              height: 490,
+              width: 350,
+              alignContent: 'center'
+              }}>
+              <CardHeader
+                title={title}
+                subheader="Author:"
+              />
+              <CardMedia
+                component="img"
+                height="300"
+                image={book_img}
+                alt="book cover"
+                sx={{objectFit: "contain" }}
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  User Ratings: {heart_count} likes and {pepper_count} spicy
+                </Typography>
+              </CardContent>
+                <IconButton aria-label="Loved it!">
+                  <FavoriteBorderIcon />
+                </IconButton>
+                <IconButton aria-label="Spicy">
+                  <LocalFireDepartmentIcon />
+                </IconButton>
+                <IconButton aria-label="Add to bookshelf">
+                  <AddIcon />
+                </IconButton>
+            </Card>
+          </Grid>
+          ))}
+        </Box>
   );
 }
 

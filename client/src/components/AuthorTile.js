@@ -17,13 +17,14 @@ function AuthorTile({id, name, publisher, website, author_img}) {
           sx={{ 
             display: 'inline-flex ', 
             flexWrap: 'wrap',
-            
+            justifyContent: 'space-evenly',
+            alignItems: 'stretch',
           }}
           >
         {cards.map((card) => (
           <Grid item key={card} xs={12} sm={6} md={4}      
           >  
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 300, minWidth:300}}>
           <CardHeader
           title={name}
           subheader={publisher}
