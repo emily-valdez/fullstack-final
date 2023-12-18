@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom'
 
 
 function AuthorTile({id, name, publisher, website, author_img}) {
@@ -38,7 +39,7 @@ function AuthorTile({id, name, publisher, website, author_img}) {
           />
           <CardContent>
           <Typography variant="body2" color="text.secondary">
-           {website}
+          <Link to={website}>Visit {name}'s Website.</Link>
           </Typography>
           </CardContent>
         </Card>
