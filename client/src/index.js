@@ -5,8 +5,9 @@ import Images from "./components/Images"
 import Users from "./components/Users"
 import Bookshelf from "./components/Bookshelf";
 import Logout from "./components/Logout";
-import Login from "./components/Login"
+import Books from "./components/Books"
 import Register from "./components/Register"
+import FAQ from "./components/FAQ"
 import ReactDOM from "react-dom";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -22,6 +23,9 @@ const routes = [
     {
         path:"/",
         element: <App/>
+    },{
+        path: "/books",
+        element: <Books />
     },{
         path: "/authors",
         element: <Authors />
@@ -39,10 +43,10 @@ const routes = [
         element: <Bookshelf />
     },{
         path: "/login",
-        element: <Login />
-    },{
-        path: "/register",
         element: <Register />
+    },{
+        path: "/faq",
+        element: <FAQ />
     }
 ]
 

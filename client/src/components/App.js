@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import NavBar from "./NavBar"
-import Books from "./Books"
+// import Books from "./Books"
 import Register from "./Register"
+
 
 function App() {
   const [user, setUser] = useState(null)
   const [register, setRegister] = useState(false)
   const navigate = useNavigate()
+  // const [books, setBooks] = useState([])
+
+  // useEffect(() => {
+  //   fetch("/books")
+  //     .then((resp) => resp.json())
+  //     .then((allBooks) => setBooks(allBooks));
+  //   }, []);
 
   useEffect(() => {
     fetch('/authorized')
@@ -17,7 +25,7 @@ function App() {
       if (resp.ok) {
         resp.json().then((user) => setUser(user))
       } else {
-          resp.json().then(() => navigate('/register')) 
+          resp.json().then(() => navigate('/login')) 
           console.log('error')
       }
     })
@@ -39,7 +47,7 @@ function App() {
   return <div>
       <Button variant="contained" onClick={handleLogout}>Logout</Button>
       <NavBar />
-      <Books /> 
+      {/* <Books />  */}
     </div>
 }
 export default App;

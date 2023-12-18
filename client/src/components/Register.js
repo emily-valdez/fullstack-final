@@ -29,7 +29,7 @@ function Register({setUser}) {
         },
         validationSchema: signup ? signupSchema : loginSchema,
         onSubmit: (values) => {
-            const endpoint = signup ? '/users' : '/register'
+            const endpoint = signup ? '/users' : '/login'
             fetch(endpoint, {
                 method: 'POST',
                 headers: {

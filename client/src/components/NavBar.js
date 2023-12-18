@@ -43,7 +43,7 @@ function NavBar(){
             </Typography>
             <Typography variant="h6" 
               component="a" 
-              href="/"
+              href="/books"
               sx={{ 
               flexGrow: .15,
               fontFamily: 'Segoe UI', 
@@ -67,7 +67,7 @@ function NavBar(){
               component="a"
               href="/users_books" 
               sx={{
-               flexGrow: 7,
+               flexGrow: 7.5,
                fontFamily: 'Segoe UI',
                color: 'inherit', 
                textDecoration: 'none'
@@ -75,14 +75,25 @@ function NavBar(){
               My Bookshelf
             </Typography><Typography variant="h6" 
               component="a"
-              href="/users" 
+              href="/faq" 
               sx={{
                flexGrow: .15,
                fontFamily: 'Segoe UI',
                color: 'inherit', 
                textDecoration: 'none'
               }}>
-              All Users
+              F.A.Q.
+            </Typography>
+            <Typography variant="h6" 
+              component="a"
+              href="/logout" 
+              sx={{
+               flexGrow: .15,
+               fontFamily: 'Segoe UI',
+               color: 'inherit', 
+               textDecoration: 'none'
+              }}> 
+              Logout
             </Typography>
             <Typography variant="h6" 
               component="a"

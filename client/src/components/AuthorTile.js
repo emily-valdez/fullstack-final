@@ -18,7 +18,7 @@ function AuthorTile({id, name, publisher, website, author_img}) {
             display: 'inline-flex ', 
             flexWrap: 'wrap',
             justifyContent: 'space-evenly',
-            alignItems: 'stretch',
+            alignItems: 'center',
           }}
           >
         {cards.map((card) => (
