@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import NavBar from "./NavBar"
-// import Books from "./Books"
+import Books from "./Books"
 import Register from "./Register"
 
 
@@ -46,8 +46,7 @@ function App() {
 
   return <div>
       <Button variant="contained" onClick={handleLogout}>Logout</Button>
-      <NavBar />
-      {/* <Books />  */}
+      <Books /> 
     </div>
 }
 export default App;

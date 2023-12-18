@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BookList from "./BookList"
+import NavBar from "./NavBar"
 
 
 function Books() {
@@ -15,6 +16,7 @@ function Books() {
 
     return(
         <main>
+            <NavBar />
             <BookList
                 books={books}
             />

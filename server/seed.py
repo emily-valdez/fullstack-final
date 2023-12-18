@@ -12,8 +12,8 @@ if __name__ == '__main__':
         print("Clearing data...")
         Book.query.delete()
         Author.query.delete()
-        User.query.delete()
-        UserBook.query.delete()
+        # User.query.delete()
+        # UserBook.query.delete()
     
         print("Starting seed...")
         print("Populating authors...")

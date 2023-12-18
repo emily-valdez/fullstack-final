@@ -5,7 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
@@ -25,13 +24,13 @@ function BookTile({id, title, year, heart_count, pepper_count, author_id, book_i
           >  
             <Card variant="outlined" 
             sx={{ 
-              height: 490,
+              height:510,
               width: 350,
               alignContent: 'center'
               }}>
               <CardHeader
                 title={title}
-                subheader="Author:"
+                subheader={author_id}
               />
               <CardMedia
                 component="img"
@@ -41,17 +40,20 @@ function BookTile({id, title, year, heart_count, pepper_count, author_id, book_i
                 sx={{objectFit: "contain" }}
               />
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+              <Typography sx={{}} variant="body2" color="text.secondary">
+                  Published: {year}
+                </Typography>
+                <Typography sx={{}} variant="subtitle2" color="text.secondary">
                   User Ratings: {heart_count} likes and {pepper_count} spicy
                 </Typography>
-              </CardContent>
+              </CardContent >
                 <IconButton aria-label="Loved it!">
                   <FavoriteBorderIcon />
                 </IconButton>
                 <IconButton aria-label="Spicy">
                   <LocalFireDepartmentIcon />
                 </IconButton>
-                <IconButton aria-label="Add to bookshelf">
+                <IconButton sx={{}} aria-label="Add to bookshelf">
                   <AddIcon />
                 </IconButton>
             </Card>

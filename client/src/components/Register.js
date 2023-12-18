@@ -16,8 +16,8 @@ function Register({setUser}) {
         passwordConfirmation: yup.string().oneOf([yup.ref('password')], 'Passwords must match.')
     })
     const loginSchema = yup.object().shape({
-        username: yup.string().required('username required'),
-        password: yup.string().required('password required')
+        username: yup.string().required('Username required.'),
+        password: yup.string().required('Password required.')
     })
 
     const formik = useFormik({

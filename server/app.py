@@ -38,7 +38,6 @@ class Users(Resource):
 api.add_resource(Users, '/api/v1/users')  
     
 
-
 @app.route('/api/v1/authorized')
 def authorized():
     try:
