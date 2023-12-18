@@ -1,8 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Box, Button, Container, TextField } from '@mui/material';
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Header from "./Header"
+
+
+const black_theme = createTheme({
+    palette: {
+        primary: {
+          light: '#666666',
+          main: '#0d0d0d',
+          dark: '#00000',
+          contrastText: '#fff',
+        },
+        secondary: {
+          light: '#666666',
+          main: '#0d0d0d',
+          dark: '#ba000d',
+          contrastText: '#000',
+        },
+      },
+    });
 
 function Register({setUser}) {
     const [signup, setSignup] = useState(true)
@@ -56,10 +76,12 @@ function Register({setUser}) {
     }
 
     return (
+    <ThemeProvider theme={black_theme}>
+        <Header />
         <Container maxWidth='sm'>
             {/* { Object.keys(formik.errors).map((key) => <li>{formik.errors[key]}</li>) } */}
-            <Button onClick={toggleSignup}>{signup ? 'Login instead!' : 'Register for an account'}</Button>
-            <form onSubmit={formik.handleSubmit}>
+            <Button onClick={toggleSignup}>{signup ? 'Login instead' : 'Register for an account'}</Button>
+            <form sx={{}} onSubmit={formik.handleSubmit}>
               
                     <TextField 
                         id="username" 
@@ -113,6 +135,7 @@ function Register({setUser}) {
                 <Button variant="contained" type="submit">Submit</Button>
             </form>
         </Container>
+    </ThemeProvider>
     )
 }
 
