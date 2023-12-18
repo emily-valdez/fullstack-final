@@ -22,6 +22,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
 
+// import {} from '@mui/material/colors';
+
 
 // function UserBook({books}) {
 //         const [userbook, setUserBook] = useState([]);
@@ -35,17 +37,32 @@ import AddIcon from '@mui/icons-material/Add';
 const cards = [1, 2, 3, 4, 5, 6, 7, 8];
 
 
-const defaultTheme = createTheme();
+const black_theme = createTheme({
+    palette: {
+        primary: {
+          light: '#666666',
+          main: '#0d0d0d',
+          dark: '#00000',
+          contrastText: '#fff',
+        },
+        secondary: {
+          light: '#666666',
+          main: '#0d0d0d',
+          dark: '#ba000d',
+          contrastText: '#000',
+        },
+      },
+    });
 
 export default function Bookshelf() {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={black_theme}>
         <NavBar />
         <CssBaseline />
       <main>
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            backgroundImage: '',
             pt: 8,
             pb: 6,
           }}
@@ -66,7 +83,7 @@ export default function Bookshelf() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">See all Books</Button>
+              <Button sx={{ bgcolor: 'black'}} variant="contained">See all Books</Button>
               <Button variant="outlined">Add a New Book</Button>
             </Stack>
           </Container>
@@ -82,7 +99,7 @@ export default function Bookshelf() {
           >  
             <Card variant="outlined" 
             sx={{ 
-              height: 490,
+              height: 480,
               width: 350,
               alignContent: 'center'
               }}>
