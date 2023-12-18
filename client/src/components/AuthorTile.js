@@ -38,6 +38,9 @@ function AuthorTile({id, name, publisher, website, author_img}) {
           sx={{objectFit: "contain" }}
           />
           <CardContent>
+          {/* <Typography variant="body2" color="text.secondary">
+            Books: 
+          </Typography> */}
           <Typography variant="body2" color="text.secondary">
           <Link to={website}>Visit {name}'s Website.</Link>
           </Typography>
