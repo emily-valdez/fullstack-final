@@ -15,10 +15,15 @@ function Books() {
           })
       }, []);
 
+      function onNewBook(newBook) {
+        setBooks((currentBooks) => [...currentBooks, newBook]);
+      }
+
     return(
         <main>
             <BookList
                 books={books}
+                onNewBook={onNewBook}
             />
         </main>
     )

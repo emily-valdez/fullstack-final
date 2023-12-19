@@ -3,7 +3,7 @@ import BookTile from "./BookTile";
 
 
 function BookList({books}){
-    const renderBookTiles = books.map(({id, title, year, author_id, heart_count, pepper_count, book_img}) => (
+    const renderBookTiles = books.map(({id, title, year, author_id, heart_count, pepper_count, book_img, authors:{name}}) => (
         <BookTile 
             key={id} 
             id={id}
@@ -13,6 +13,7 @@ function BookList({books}){
             heart_count={heart_count}
             pepper_count={pepper_count}
             book_img={book_img}
+            authors={name}
             />
     ))
         

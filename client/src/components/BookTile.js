@@ -11,7 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 
-function BookTile({id, title, year, heart_count, pepper_count, author_id, book_img}) {
+function BookTile({id, title, year, heart_count, pepper_count, author_id, book_img, authors}) {
   const cards = [id]
   return (
       <Box sx={{ 
@@ -30,7 +30,7 @@ function BookTile({id, title, year, heart_count, pepper_count, author_id, book_i
               }}>
               <CardHeader
                 title={title}
-                subheader={author_id}
+                subheader={authors}
               />
               <CardMedia
                 component="img"

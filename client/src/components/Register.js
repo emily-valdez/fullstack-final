@@ -79,7 +79,7 @@ function Register() {
     return (
     <ThemeProvider theme={black_theme}>
         <Container maxWidth='xs'>
-            <Button onClick={toggleSignup}>{signup ? 'Already have an account? Login here.' : 'New user? Register for an account here.'}</Button>
+            <Button onClick={toggleSignup}>{signup ? 'Already have an account? Login here.' : 'New user? Register for an account.'}</Button>
 
             <form sx={{}} onSubmit={formik.handleSubmit}>
                     <TextField 
