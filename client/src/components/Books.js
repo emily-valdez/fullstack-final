@@ -3,7 +3,7 @@ import BookList from "./BookList"
 import NavBar from "./NavBar"
 
 
-function Books() {
+function Books({authors}) {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
@@ -19,6 +19,7 @@ function Books() {
             <NavBar />
             <BookList
                 books={books}
+                authors={authors}
             />
         </main>
     )

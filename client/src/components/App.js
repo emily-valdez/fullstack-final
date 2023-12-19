@@ -6,13 +6,12 @@ import Logout from "./Logout"
 
 import Books from "./Books"
 import Register from "./Register"
+import Authors from "./Authors"
 
 
 function App() {
-  const [user, setUser] = useState(null)
-  // const [register, setRegister] = useState(false)
+  const [user, setUser] = useState([{username:"", password:""}])
   const navigate = useNavigate()
-
 
 const black_theme = createTheme({
   palette: {
@@ -56,9 +55,8 @@ const black_theme = createTheme({
   }
 
   if (!user) {
-    return <Register user={user} setUser={setUser} />
+    return <Register setUser={setUser} />
   }
-
 
   return <div>
     <ThemeProvider theme={black_theme}>

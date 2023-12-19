@@ -10,8 +10,6 @@ from config import app, db, api
 # Model imports
 from models import User, Book, Author, UserBook
 
-
-
 # class Users (Resource):
 #     def get(self):
 #         user_list = [n.to_dict() for n in User.query.all()]
@@ -113,15 +111,15 @@ class UsersBooks (Resource):
         )
 api.add_resource(UsersBooks, '/api/v1/users_books')
 
-class UsersBooksById (Resource):
-    def delete(self, id):
-        user_book = UserBook.query.get(id)
-        if not user_book:
-            return make_response({"Error": "UserBook not found."}, 404)
-        db.session.delete(user_book)
-        db.session.commit()
-        return make_response ("", 204)
-api.add_resource(UsersBooksById, '/api/v1/users_books/<int:id>')
+# class UsersBooksById (Resource):
+#     def delete(self, id):
+#         user_book = UserBook.query.get(id)
+#         if not user_book:
+#             return make_response({"Error": "UserBook not found."}, 404)
+#         db.session.delete(user_book)
+#         db.session.commit()
+#         return make_response ("", 204)
+# api.add_resource(UsersBooksById, '/api/v1/users_books/<int:id>')
 
 @app.route('/')
 def index():

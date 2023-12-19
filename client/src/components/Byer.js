@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Container from '@mui/material/Container';
 
-function Header(){
+function Byer(){
  
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +31,7 @@ function Header(){
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'flex' },
-                flexGrow: .1,
+                flexGrow: .01,
                 fontFamily: 'Segoe UI',
                 fontWeight: 500,
                 letterSpacing: '.3rem',
@@ -39,20 +39,20 @@ function Header(){
                 textDecoration: 'none',
               }}
             >
-              Welcome to BookTok
+              BookTok 
             </Typography>
-            {/* <Typography variant="h6" 
+            <Typography variant="h6" 
               component="a" 
-              href="/books"
+              href="/login"
               sx={{ 
-              flexGrow: .15,
+              // flexGrow: .015,
               fontFamily: 'Segoe UI', 
               color: 'inherit',
               textDecoration: 'none'
               }}>
-              Books
+              Login
             </Typography>
-            <Typography variant="h6"
+            {/* <Typography variant="h6"
               component="a"
               href="/authors" 
               sx={{ 
@@ -105,7 +105,7 @@ function Header(){
                textDecoration: 'none'
               }}> 
               Register
-            </Typography> */}
+            </Typography>  */}
           </Toolbar>
         </Container>
       </AppBar>
@@ -113,4 +113,4 @@ function Header(){
   );
 }
   
-export default Header;
+export default Byer;

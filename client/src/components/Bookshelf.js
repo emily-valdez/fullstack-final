@@ -21,17 +21,17 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
+import { useState, useEffect } from 'react'
 
-// import {} from '@mui/material/colors';
 
 
 // function UserBook({books}) {
 //         const [userbook, setUserBook] = useState([]);
         
 //             useEffect(() => {
-//                 fetch("http://127.0.0.1:5555/api/v1/users_books")
+//                 fetch('/users_books')
 //                   .then((resp) => resp.json())
-//                   .then((allUserBook) => setUserBook(allUserBook));
+//                   .then((userbook) => setUserBook(userbook));
 //               }, []);
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -54,7 +54,7 @@ const black_theme = createTheme({
       },
     });
 
-export default function Bookshelf() {
+function Bookshelf() {
   return (
     <ThemeProvider theme={black_theme}>
         <NavBar />
@@ -139,22 +139,4 @@ export default function Bookshelf() {
 }
 
 
-
-// function UserBook() {
-//     const [userbook, setUserBook] = useState([]);
-    
-//         useEffect(() => {
-//             fetch("http://127.0.0.1:5555/api/v1/users_books")
-//               .then((resp) => resp.json())
-//               .then((allUserBook) => setUserBook(allUserBook));
-//           }, []);
-    
-//     return (
-//         <div>
-//             <NavBar />
-    
-//         </div>
-//     )
-// }
-  
-//   export default UserBook;
+export default Bookshelf
