@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useOutletContext } from "react-router-dom";
-
+import {FormControl, InputLabel} from '@mui/material'
 
 const black_theme = createTheme({
     palette: {
@@ -78,12 +78,10 @@ function Register() {
 
     return (
     <ThemeProvider theme={black_theme}>
-        {/* <Header /> */}
-        <Container maxWidth='sm'>
-            {/* { Object.keys(formik.errors).map((key) => <li>{formik.errors[key]}</li>) } */}
-            <Button onClick={toggleSignup}>{signup ? 'Login instead' : 'Register for an account'}</Button>
+        <Container maxWidth='xs'>
+            <Button onClick={toggleSignup}>{signup ? 'Already have an account? Login here.' : 'New user? Register for an account here.'}</Button>
+
             <form sx={{}} onSubmit={formik.handleSubmit}>
-              
                     <TextField 
                         id="username" 
                         label="Username" 
@@ -93,8 +91,8 @@ function Register() {
                         required
                         value={formik.values.username}
                         onChange={formik.handleChange}
+                        fullWidth='true'
                     />
-               
                 <Box>
                     {signup && <TextField 
                         id="email"
@@ -105,6 +103,7 @@ function Register() {
                         required
                         value={formik.values.email}
                         onChange={formik.handleChange}
+                        fullWidth='true'
                     />}
                 </Box>
                 <Box>
@@ -118,6 +117,7 @@ function Register() {
                         required
                         value={formik.values.password}
                         onChange={formik.handleChange}
+                        fullWidth='true'
                     />
                 </Box>
                 <Box>
@@ -131,6 +131,7 @@ function Register() {
                         required
                         value={formik.values.passwordConfirmation}
                         onChange={formik.handleChange}
+                        fullWidth='true'
                     />}
                 </Box>
                 <Button variant="contained" type="submit">Submit</Button>

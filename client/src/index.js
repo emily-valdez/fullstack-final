@@ -16,6 +16,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import NewBook from "./components/NewBook";
 
 const container = document.getElementById("root");
 
@@ -40,6 +41,9 @@ const routes = [
             },{
                 path: "/logout",
                 element: <Logout />
+            },{
+                path: "/addbook",
+                element: <NewBook />
             }
         ]
 
