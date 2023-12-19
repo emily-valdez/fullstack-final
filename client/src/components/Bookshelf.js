@@ -25,14 +25,14 @@ import { useState, useEffect } from 'react'
 
 
 
-// function UserBook({books}) {
-//         const [userbook, setUserBook] = useState([]);
+function UserBook({books}) {
+        const [user_book, setUser_Book] = useState([]);
         
-//             useEffect(() => {
-//                 fetch('/users_books')
-//                   .then((resp) => resp.json())
-//                   .then((userbook) => setUserBook(userbook));
-//               }, []);
+            useEffect(() => {
+                fetch('/users_books')
+                  .then((resp) => resp.json())
+                  .then((user_book) => setUser_Book(user_book));
+              }, []);
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -137,6 +137,6 @@ function Bookshelf() {
     </ThemeProvider>
   );
 }
+}
 
-
-export default Bookshelf
+export default UserBook

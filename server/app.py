@@ -93,6 +93,10 @@ class AuthorsById (Resource):
 api.add_resource(AuthorsById, '/api/v1/authors/<int:id>')
 
 class UsersBooks (Resource):
+    def get(self):
+        user = User.query.filter(User.id == session['user_id']).first()
+        return [book.to_dict() for book in user.books], 200
+    
     def post(self):
         params = request.json
         try:
