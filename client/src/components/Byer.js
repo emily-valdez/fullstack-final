@@ -43,7 +43,7 @@ function Byer(){
             </Typography>
             <Typography variant="h6" 
               component="a" 
-              href="/login"
+              href="/"
               sx={{ 
               // flexGrow: .015,
               fontFamily: 'Segoe UI', 

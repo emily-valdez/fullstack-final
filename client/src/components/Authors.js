@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import AuthorList from "./AuthorList"
-import NavBar from "./NavBar"
 
 function Authors() {
     const [authors, setAuthors] = useState([]);
@@ -13,7 +12,6 @@ function Authors() {
 
     return(
         <main>
-            <NavBar />
             <AuthorList
                 authors={authors}
             />

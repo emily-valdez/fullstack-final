@@ -6,9 +6,22 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router-dom';
 
-function NavBar(){
- 
+function NavBar({user, setUser}){
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    fetch('/logout', {
+      method: 'DELETE'
+    }).then((resp) => {
+      if (resp.ok) {
+        navigate('/logout')
+        setUser(null)
+        navigate('/')
+      }
+    })
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{background: 'black'}}>
@@ -27,7 +40,7 @@ function NavBar(){
               variant="h5"
               noWrap
               component="a"
-              href="/"
+              // href=""
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'flex' },
@@ -86,7 +99,18 @@ function NavBar(){
             </Typography>
             <Typography variant="h6" 
               component="a"
-              href="/logout" 
+              href="/" 
+              sx={{
+               flexGrow: .15,
+               fontFamily: 'Segoe UI',
+               color: 'inherit', 
+               textDecoration: 'none'
+              }}> 
+              Login / Register
+            </Typography>
+            <Typography variant="h6" 
+              component="a"
+              href="/logout" onClick={handleLogout}
               sx={{
                flexGrow: .15,
                fontFamily: 'Segoe UI',
@@ -94,17 +118,6 @@ function NavBar(){
                textDecoration: 'none'
               }}> 
               Logout
-            </Typography>
-            <Typography variant="h6" 
-              component="a"
-              href="/register" 
-              sx={{
-               flexGrow: 1,
-               fontFamily: 'Segoe UI',
-               color: 'inherit', 
-               textDecoration: 'none'
-              }}> 
-              Register
             </Typography>
           </Toolbar>
         </Container>

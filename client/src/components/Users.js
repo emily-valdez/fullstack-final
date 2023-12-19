@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar"
 import UserList from "./UserList"
 
 function Users({id, username}) {
@@ -13,7 +12,6 @@ function Users({id, username}) {
 
     return(
         <main>
-            <NavBar />
             <UserList 
             users={users}/>
         </main>

@@ -1,40 +1,22 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import NavBar from "./NavBar"
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
 import { useState, useEffect } from 'react'
-
-
-
-function UserBook({books}) {
-        const [user_book, setUser_Book] = useState([]);
-        
-            useEffect(() => {
-                fetch('/users_books')
-                  .then((resp) => resp.json())
-                  .then((user_book) => setUser_Book(user_book));
-              }, []);
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+import { useOutletContext } from "react-router-dom";
 
 
 const black_theme = createTheme({
@@ -54,10 +36,18 @@ const black_theme = createTheme({
       },
     });
 
-function Bookshelf() {
-  return (
+function Bookshelf({id}) {
+  const {user, setUser} = useOutletContext()
+  const [user_book, setUser_Book] = useState([]);
+  const cards = [id];
+        console.log(user_book)
+    useEffect(() => {
+        fetch('/users_books')
+          .then((resp) => resp.json())
+          .then((books) => setUser_Book(books));
+      }, []);
+    return (
     <ThemeProvider theme={black_theme}>
-        <NavBar />
         <CssBaseline />
       <main>
         <Box
@@ -137,6 +127,5 @@ function Bookshelf() {
     </ThemeProvider>
   );
 }
-}
 
-export default UserBook
+export default Bookshelf;

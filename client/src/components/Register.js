@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Header from "./Header"
+import { useOutletContext } from "react-router-dom";
 
 
 const black_theme = createTheme({
@@ -24,9 +24,10 @@ const black_theme = createTheme({
       },
     });
 
-function Register({setUser}) {
+function Register() {
     const [signup, setSignup] = useState(true)
     const [error, setError] = useState(null)
+    const {user, setUser} = useOutletContext()
     const navigate = useNavigate();
 
     const signupSchema = yup.object().shape({
@@ -61,7 +62,7 @@ function Register({setUser}) {
                     resp.json().then(({ user }) => {
                         setUser(user)
                         setError(null)
-                        navigate("/")
+                        navigate("/books")
                     })
                 } else { 
                     resp.json()
@@ -77,7 +78,7 @@ function Register({setUser}) {
 
     return (
     <ThemeProvider theme={black_theme}>
-        <Header />
+        {/* <Header /> */}
         <Container maxWidth='sm'>
             {/* { Object.keys(formik.errors).map((key) => <li>{formik.errors[key]}</li>) } */}
             <Button onClick={toggleSignup}>{signup ? 'Login instead' : 'Register for an account'}</Button>

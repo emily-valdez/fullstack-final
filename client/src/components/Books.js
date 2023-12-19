@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import BookList from "./BookList"
-import NavBar from "./NavBar"
 
 
-function Books({authors}) {
+function Books() {
+    const {user} = useOutletContext()
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
@@ -16,10 +17,8 @@ function Books({authors}) {
 
     return(
         <main>
-            <NavBar />
             <BookList
                 books={books}
-                authors={authors}
             />
         </main>
     )

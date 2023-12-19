@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Logout from "./Logout"
+import { Outlet } from "react-router-dom";
 
 import Books from "./Books"
 import Register from "./Register"
+import NavBar from "./NavBar"
 import Authors from "./Authors"
-
+import Bookshelf from "./Bookshelf"
+import FAQ from "./FAQ"
+import Logout from "./Logout"
 
 function App() {
-  const [user, setUser] = useState([{username:"", password:""}])
+  const [user, setUser] = useState([])
   const navigate = useNavigate()
 
 const black_theme = createTheme({
@@ -36,7 +38,7 @@ const black_theme = createTheme({
       if (resp.ok) {
         resp.json().then((user) => setUser(user))
       } else {
-          resp.json().then(() => navigate('/books')) 
+          resp.json().then(() => navigate('/')) 
           console.log('error')
       }
     })
@@ -58,11 +60,15 @@ const black_theme = createTheme({
     return <Register setUser={setUser} />
   }
 
+  const context = {
+    user,
+    setUser
+  }
+
   return <div>
     <ThemeProvider theme={black_theme}>
-      {/* <Button variant="contained" onClick={handleLogout}>Logout</Button> */}
-      <Books /> 
-      <Logout onClick={handleLogout}/>
+      <NavBar user={user} setUser={setUser}/>
+      <Outlet context={context}/>
     </ThemeProvider >
   </div>
 }
