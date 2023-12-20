@@ -101,11 +101,11 @@ class BooksById (Resource):
         return make_response({'like': like.to_dict()}, 200)
     
     def patch(self, id):
-        like = Book.query.filter_by(id=id).first()
+        spicy = Book.query.filter_by(id=id).first()
         params = request.json
-        like.pepper_count = params['pepper_count']
+        spicy.pepper_count = params['pepper_count']
         db.session.commit()
-        return make_response({'like': like.to_dict()}, 200)
+        return make_response({'spicy': spicy.to_dict()}, 200)
     
 api.add_resource(BooksById, '/api/v1/books/<int:id>')
         
@@ -132,16 +132,16 @@ class UsersBooks (Resource):
     def post(self):
         params = request.json
         try:
-            user_book = UserBook(
+            newuser_book = UserBook(
                 user_id = params['user_id'],
                 book_id = params['book_id']
             )
         except:
             return make_response({"Errors": ["validation errors"]}, 422)
-        db.session.add(user_book)
+        db.session.add(newuser_book)
         db.session.commit()
         return make_response(
-            user_book.to_dict(rules = (
+            newuser_book.to_dict(rules = (
                 'user_id', 'book_id', 'user', 'book', '-user.users_books', '-book.users_books'
             )), 201
         )
