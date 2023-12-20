@@ -56,7 +56,7 @@ function NewBook({onNewBook}) {
         <input
           type="text"
           name="title"
-          placeholder="Book title"
+          placeholder="Book Title"
           value={title}
           onChange={handleChange}
         />

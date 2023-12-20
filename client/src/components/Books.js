@@ -15,15 +15,24 @@ function Books() {
           })
       }, []);
 
-      function onNewBook(newBook) {
+      function handleNewBook(newBook) {
         setBooks((currentBooks) => [...currentBooks, newBook]);
       }
+
+      // function handleUpdateBook(updatedBook) {
+      //   const updatedBooks = books.map((book) =>
+      //   book.id === updatedBook.id ? updatedBook : book
+      //   );
+      //   setBooks(updatedBooks)
+      // }
 
     return(
         <main>
             <BookList
                 books={books}
-                onNewBook={onNewBook}
+                setBooks={setBooks}
+                onNewBook={handleNewBook}
+                // onUpdateBook={handleUpdateBook}
             />
         </main>
     )

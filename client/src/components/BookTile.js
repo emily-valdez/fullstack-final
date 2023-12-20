@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,8 +12,44 @@ import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 
-function BookTile({id, title, year, heart_count, pepper_count, author_id, book_img, authors}) {
+function BookTile({id, title, year, author_id, heart_count, pepper_count, book_img, authors}) {
   const cards = [id]
+  const [books, setBooks] = useState([])
+
+  const handleHearts = () => {
+    fetch(`/books/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({heart_count: heart_count + 1}),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setBooks(data.like)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+
+    const handlePeppers = () => {
+      fetch(`/books/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({pepper_count: pepper_count + 1}),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          setBooks(data.like)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+      
   return (
       <Box sx={{ 
         display: 'inline-flex ', 
@@ -47,10 +84,10 @@ function BookTile({id, title, year, heart_count, pepper_count, author_id, book_i
                   User Ratings: {heart_count} likes and {pepper_count} spicy
                 </Typography>
               </CardContent >
-                <IconButton aria-label="Loved it!">
+                <IconButton aria-label="Loved it!" onClick={handleHearts}>
                   <FavoriteBorderIcon />
                 </IconButton>
-                <IconButton aria-label="Spicy">
+                <IconButton aria-label="Spicy" onClick={handlePeppers}>
                   <LocalFireDepartmentIcon />
                 </IconButton>
                 <IconButton sx={{}} aria-label="Add to bookshelf">

@@ -87,11 +87,26 @@ class Books (Resource):
 api.add_resource(Books, '/api/v1/books')
 
 class BooksById (Resource):
-    def get(self):
-        book = Book.query.get(id)
-        if not book:
-            return make_response ({'Error: Book not found.'}, 404)
-        return make_response(book.to_dict(), 200)
+    def get(self, id):
+       book = Book.query.get(id)
+       if not book:
+           return make_response({"error"}, 404)
+       return make_response({'book': book.to_dict()}, 200)
+    
+    def patch(self, id):
+        like = Book.query.filter_by(id=id).first()
+        params = request.json
+        like.heart_count = params['heart_count']
+        db.session.commit()
+        return make_response({'like': like.to_dict()}, 200)
+    
+    def patch(self, id):
+        like = Book.query.filter_by(id=id).first()
+        params = request.json
+        like.pepper_count = params['pepper_count']
+        db.session.commit()
+        return make_response({'like': like.to_dict()}, 200)
+    
 api.add_resource(BooksById, '/api/v1/books/<int:id>')
         
 class Authors (Resource):
@@ -154,3 +169,14 @@ def check_logged_id():
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
 
+
+# book = Book.query.filter_by(id=id).first()
+        # for attr in request.form:
+        #     setattr(record, attr, request.form[attr])
+            
+        # db.session.add(record)
+        # db.session.commit()
+        
+        # response_dict = record.to_dict()
+        # response = make_response(response_dict, 200)
+        # return response

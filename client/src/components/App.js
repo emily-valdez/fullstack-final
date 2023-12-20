@@ -12,12 +12,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null)
   const navigate = useNavigate()
 
-  // const loggedin = () => {
-  //   setIsLoggedIn(true)
-  // }
-  // const loggedout = () => {
-  //   setIsLoggedIn(false)
-  // }
 
 const black_theme = createTheme({
   palette: {
@@ -48,17 +42,6 @@ const black_theme = createTheme({
     })
   }, [])
 
-  // function handleLogout() {
-  //   fetch('/logout', {
-  //     method: 'DELETE'
-  //   }).then((resp) => {
-  //     if (resp.ok) {
-  //       navigate('/logout')
-  //       setUser(null)
-  //       navigate('/')
-  //     }
-  //   })
-  // }
 
   if (!user) {
     return <Register setUser={setUser} />
