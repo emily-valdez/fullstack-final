@@ -27,8 +27,12 @@ if __name__ == '__main__':
         ssc = Author(name="Scarlett St. Clair", publisher="Sourcebooks", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702896223/jd95obspf3kn7l8s41lb.jpg", website="https://scarlettstclair.com/")
         rf = Author(name="R.F. Kuang", publisher="Harper Voyager", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702896866/bpaqyofzfv8fbwqt7mdi.jpg", website="https://rfkuang.com/")
         smg = Author(name="Silvia Moreno-Garcia", publisher="Del Rey", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702897096/ddri2htysnpbslinkig5.jpg", website="https://silviamoreno-garcia.com/")
+        emh = Author(name="Emily Henry", publisher="Berkley Books", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105032/eojvyhe6fnlrstgm1dt1.jpg", website="https://www.emilyhenrybooks.com/")
+        bb = Author(name="Bolu Babalola", publisher="Harper Collins", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105321/ddzxs9lxpwgvnytk1kpf.webp", website="https://www.bolubabalola.com/")
+        gz = Author(name="Gabrielle Zevin", publisher="Knopf Doubleday Publishing Group", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105805/pn1d4kfknbdxlah1aiwq.webp", website="https://gabriellezevin.com/tomorrowx3/")
+        matt = Author(name="Matt Haig", publisher="Canongate Books", author_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703106283/hi8syazp21w8lk8nuuju.jpg", website="http://www.matthaig.com/")
         # Author(name="", publisher="", author_img="", website="")
-        authors = [sjm, abby, jar, casey, ana, ali, ch, ssc, rf, smg]
+        authors = [sjm, abby, jar, casey, ana, ali, ch, ssc, rf, smg, emh, bb, gz, matt]
         
     
         print("Printing books...")
@@ -43,8 +47,12 @@ if __name__ == '__main__':
         ssc_tod = Book(title="A Touch of Darkness", year="2019", author_id="8", heart_count="11", pepper_count="9", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702896402/trfgzlsihwnpu5mhzgdf.jpg")
         rf_babel = Book(title="Babel", year="2022", author_id="9", heart_count="7", pepper_count="0", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702896769/sc75fze9kvshqittqat9.jpg")
         smg_mg = Book(title="Mexican Gothic", year="2020", author_id="10", heart_count="9", pepper_count="0", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1702897231/kb3wjzlfraplq4eovgbj.webp")
+        emh_bookl = Book(title="Book Lovers", year="2022", author_id="11", heart_count="8", pepper_count="3", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105173/p5o2vno2w9hmva99eoho.jpg")
+        bb_hs = Book(title="Honey and Spice", year="2022", author_id="12", heart_count="12", pepper_count="6", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105285/hvymo9clokbty7esjcf3.webp")
+        gz_ttt = Book(title="Tomorrow, and Tomorrow...", year="2022", author_id="13", heart_count="13", pepper_count="1", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703105696/a7eizxa0gqcitsgfv9i1.webp")
+        matt_md = Book(title="The Midnight Library", year="2020", author_id="14", heart_count="8", pepper_count="1", book_img="https://res.cloudinary.com/debhztqlv/image/upload/v1703106278/hzqwc3kwebq9ario8ie8.webp")
         # Book(title="", year="", author_id="", heart_count="", pepper_count="", book_img="")
-        books = [sjm_acotar, jar_cogb, sjm_acosf, abby_yourstruly, casey_rwrb, ana_twisted, ali_love, ch_verity, ssc_tod, rf_babel, smg_mg]
+        books = [sjm_acotar, jar_cogb, sjm_acosf, abby_yourstruly, casey_rwrb, ana_twisted, ali_love, ch_verity, ssc_tod, rf_babel, smg_mg, emh_bookl, bb_hs, gz_ttt, matt_md]
     
     
         print("Adding users...")
