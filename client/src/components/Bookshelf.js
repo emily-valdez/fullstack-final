@@ -36,19 +36,18 @@ const black_theme = createTheme({
       },
     });
 
-function Bookshelf({id}) {
-  const {user, setUser} = useOutletContext()
-  const [user_book, setUser_Book] = useState([]);
-  const cards = [id];
-        // console.log(user_book)
+function Bookshelf() {
+  const [userBook, setUserBook] = useState([]);
+  // const cards = [1, 2, 3, 4, 5, 6];
+        console.log(userBook)
     useEffect(() => {
         fetch(`/users_books`)
           .then((resp) => resp.json())
-          .then((user_book) => setUser_Book(user_book));
+          .then((userBook) => setUserBook(userBook));
       }, []);
       
     return (
-    <ThemeProvider theme={black_theme}>
+      <ThemeProvider theme={black_theme}>
         <CssBaseline />
       <main>
         <Box
@@ -85,32 +84,35 @@ function Bookshelf({id}) {
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
         }}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}      
+        {userBook.map((card) => (
+          <Grid item key={card.id} xs={12} sm={6} md={4}      
           >  
             <Card variant="outlined" 
             sx={{ 
-              height: 480,
+              height: 520,
               width: 350,
               alignContent: 'center'
               }}>
               <CardHeader
-                title="Title"
-                subheader
+                title={card.title}
+                subheader={card.authors.name}
               />
               <CardMedia
                 component="img"
-                height="300"
-                image
+                height="350"
+                image={card.book_img}
                 alt="book image"
                 sx={{objectFit: "contain" }}
               />
               <CardContent>
+              <Typography sx={{}} variant="body2" color="text.secondary">
+                  Published: {card.year}
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  User Ratings: likes and spicy
+                  User Ratings: {card.heart_count} likes and {card.pepper_count} spicy
                 </Typography>
               </CardContent>
-                <IconButton aria-label="Loved it!">
+                {/* <IconButton aria-label="Loved it!">
                   <FavoriteBorderIcon />
                 </IconButton>
                 <IconButton aria-label="Spicy">
@@ -118,7 +120,7 @@ function Bookshelf({id}) {
                 </IconButton>
                 <IconButton aria-label="Add to bookshelf">
                   <AddIcon />
-                </IconButton>
+                </IconButton> */}
             </Card>
           </Grid>
           ))}

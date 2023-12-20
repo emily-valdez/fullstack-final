@@ -16,8 +16,7 @@ import { useOutletContext } from "react-router-dom";
 function BookTile({id, title, year, author_id, heart_count, pepper_count, book_img, authors, handleUpdateBook}) {
   const cards = [id]
   const {user, setUser} = useOutletContext()
-  // const [user_book, setUser_Book] = useState([]);
-  // const [newuser_book, setNewUser_Book] = useState([])
+ 
 
   const handleHearts = () => {
     fetch(`/books/${id}`, {

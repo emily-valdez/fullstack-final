@@ -56,7 +56,7 @@ const black_theme = createTheme({
     isLoggedIn,
     setIsLoggedIn
   }
-console.log(user)
+
   return <div>
     <ThemeProvider theme={black_theme}>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

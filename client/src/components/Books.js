@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import BookList from "./BookList"
-
+import Bookshelf from "./Bookshelf"
 
 function Books() {
     const {user} = useOutletContext()
@@ -19,12 +19,6 @@ function Books() {
         setBooks((currentBooks) => [...currentBooks, newBook]);
       }
 
-      // function handleUpdateBook(updatedBook) {
-      //   const updatedBooks = books.map((book) =>
-      //   book.id === updatedBook.id ? updatedBook : book
-      //   );
-      //   setBooks(updatedBooks)
-      // }
 
     return(
         <main>
@@ -33,10 +27,17 @@ function Books() {
                 setBooks={setBooks}
                 onNewBook={handleNewBook}
                 user={user}
-                // onUpdateBook={handleUpdateBook}
             />
         </main>
     )
 }
 
 export default Books
+
+
+    // function handleUpdateBook(updatedBook) {
+      //   const updatedBooks = books.map((book) =>
+      //   book.id === updatedBook.id ? updatedBook : book
+      //   );
+      //   setBooks(updatedBooks)
+      // }
