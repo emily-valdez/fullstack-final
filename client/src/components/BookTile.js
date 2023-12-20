@@ -17,7 +17,7 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
   const cards = [id]
   const {user, setUser} = useOutletContext()
   // const [user_book, setUser_Book] = useState([]);
-  const [newuser_book, setNewUser_Book] = useState([])
+  // const [newuser_book, setNewUser_Book] = useState([])
 
   const handleHearts = () => {
     fetch(`/books/${id}`, {
@@ -53,7 +53,7 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
         })
       }
 
-      const handlePlus = () => {
+  const handlePlus = () => {
         fetch(`/users_books`, {
           method: "POST",
           headers: {
@@ -64,16 +64,14 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
               book_id: id
             }),
           })
-          .then((r) => {
-            if (r.ok) {
-            r.json()
-            .then((newuser_book) => {
-              console.log(newuser_book)
+          .then((r) => r.json())
+            .then((user_book) => {
+              console.log(user_book)
               })
             }
-          })
+         console.log(user)
        
-  return (
+return (
       <Box sx={{ 
         display: 'inline-flex ', 
         flexWrap: 'wrap',
@@ -122,7 +120,7 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
         </Box>
   );
 }
-}
+
 export default BookTile;
 
 

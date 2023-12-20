@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import BookTile from "./BookTile";
 
 
-function BookList({books, setBooks}){
+function BookList({books, setBooks, user}){
     const handleUpdateBook = (updatedBook) => {
         const updatedBooksArray = books.map(book => {
           if (book.id === updatedBook.id) return updatedBook
@@ -22,6 +22,7 @@ function BookList({books, setBooks}){
             book_img={book_img}
             authors={name}
             handleUpdateBook={handleUpdateBook}
+            user={user}
             />
     ))
         

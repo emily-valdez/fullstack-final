@@ -34,7 +34,10 @@ const black_theme = createTheme({
     fetch('/authorized')
     .then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) => setIsLoggedIn(user))
+        resp.json().then((user) => {
+        setIsLoggedIn(user)
+        setUser(user)
+      })
       } else {
           resp.json().then(() => navigate('/')) 
           console.log('error')
@@ -53,7 +56,7 @@ const black_theme = createTheme({
     isLoggedIn,
     setIsLoggedIn
   }
-
+console.log(user)
   return <div>
     <ThemeProvider theme={black_theme}>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

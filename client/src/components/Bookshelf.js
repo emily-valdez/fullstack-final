@@ -37,12 +37,12 @@ const black_theme = createTheme({
     });
 
 function Bookshelf({id}) {
-  // const {user, setUser} = useOutletContext()
+  const {user, setUser} = useOutletContext()
   const [user_book, setUser_Book] = useState([]);
   const cards = [id];
-        console.log(user_book)
+        // console.log(user_book)
     useEffect(() => {
-        fetch('/users_books')
+        fetch(`/users_books`)
           .then((resp) => resp.json())
           .then((user_book) => setUser_Book(user_book));
       }, []);

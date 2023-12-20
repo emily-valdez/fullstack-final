@@ -33,7 +33,7 @@ class User(db.Model, SerializerMixin):
     
     # relationships
     users_books = db.relationship('UserBook', back_populates='user', cascade='all, delete-orphan')
-    books = association_proxy('users_books', 'books')
+    books = association_proxy('users_books', 'book')
     
     # serialization rules
     serialize_rules = ('-users_books.user', '-_password_hash', )
@@ -115,7 +115,7 @@ class UserBook(db.Model, SerializerMixin):
     book = db.relationship('Book', back_populates='users_books')
     
     # serialization rules
-    serialize_rules = ('-user.users_books', '-book.users.books', )
+    serialize_rules = ('-user.users_books', '-book.users_books', )
     
     def __repr__(self):
         return f'<UserBook {self.id}>'

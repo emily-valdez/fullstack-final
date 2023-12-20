@@ -32,6 +32,7 @@ function Books() {
                 books={books}
                 setBooks={setBooks}
                 onNewBook={handleNewBook}
+                user={user}
                 // onUpdateBook={handleUpdateBook}
             />
         </main>
