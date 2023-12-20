@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import ipdb
 from flask import request, make_response, session
 from flask_restful import Resource
 # from flask_migrate import Migrate
@@ -94,18 +94,16 @@ class BooksById (Resource):
        return make_response({'book': book.to_dict()}, 200)
     
     def patch(self, id):
-        like = Book.query.filter_by(id=id).first()
-        params = request.json
-        like.heart_count = params['heart_count']
-        db.session.commit()
-        return make_response({'like': like.to_dict()}, 200)
-    
-    def patch(self, id):
-        spicy = Book.query.filter_by(id=id).first()
-        params = request.json
-        spicy.pepper_count = params['pepper_count']
-        db.session.commit()
-        return make_response({'spicy': spicy.to_dict()}, 200)
+        data = request.get_json()
+        book = Book.query.filter(Book.id==id).first()
+        for attr in data:
+            setattr(book, attr, data[attr])
+            db.session.add(book)
+            db.session.commit()
+            
+        response_dict = book.to_dict()
+        response = make_response(response_dict, 200)
+        return response
     
 api.add_resource(BooksById, '/api/v1/books/<int:id>')
         
@@ -180,3 +178,10 @@ if __name__ == '__main__':
         # response_dict = record.to_dict()
         # response = make_response(response_dict, 200)
         # return response
+        
+         # def patch(self, id):
+    #     spicy = Book.query.filter_by(id=id).first()
+    #     params = request.json
+    #     spicy.pepper_count = params['pepper_count']
+    #     db.session.commit()
+    #     return make_response({'spicy': spicy.to_dict()}, 200)

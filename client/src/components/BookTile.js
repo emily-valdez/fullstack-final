@@ -11,14 +11,13 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
+import { useOutletContext } from "react-router-dom";
 
-
-function BookTile({id, title, year, author_id, heart_count, pepper_count, book_img, authors}) {
+function BookTile({id, title, year, author_id, heart_count, pepper_count, book_img, authors, handleUpdateBook}) {
   const cards = [id]
-  const [books, setBooks] = useState([])
-  const [user_book, setUser_Book] = useState([]);
+  const {user, setUser} = useOutletContext()
+  // const [user_book, setUser_Book] = useState([]);
   const [newuser_book, setNewUser_Book] = useState([])
-
 
   const handleHearts = () => {
     fetch(`/books/${id}`, {
@@ -30,7 +29,7 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
     })
       .then((r) => r.json())
       .then((data) => {
-        setBooks(data.like)
+        handleUpdateBook(data)
       })
       .catch((error) => {
         console.log(error)
@@ -47,34 +46,34 @@ function BookTile({id, title, year, author_id, heart_count, pepper_count, book_i
       })
         .then((r) => r.json())
         .then((data) => {
-          setBooks(data.spicy)
+          handleUpdateBook(data)
         })
         .catch((error) => {
           console.log(error)
         })
       }
 
-      // const handlePlus = () => {
-      //   fetch('/users_books', {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //         user_id: user.id,
-      //         book_id: newuser_book.id
-      //       }),
-      //     })
-      //     .then((r) => {
-      //       if (r.ok) {
-      //       r.json()
-      //       .then((newuser_book) => {
-      //           setUser_Book([...user_book, newuser_book.id]);
-      //         })
-      //       }
-      //     })
+      const handlePlus = () => {
+        fetch(`/users_books`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              user_id: user.id,
+              book_id: id
+            }),
+          })
+          .then((r) => {
+            if (r.ok) {
+            r.json()
+            .then((newuser_book) => {
+              console.log(newuser_book)
+              })
+            }
+          })
        
-return (
+  return (
       <Box sx={{ 
         display: 'inline-flex ', 
         flexWrap: 'wrap',
@@ -114,7 +113,7 @@ return (
                 <IconButton aria-label="Spicy" onClick={handlePeppers}>
                   <LocalFireDepartmentIcon />
                 </IconButton>
-                <IconButton sx={{}} aria-label="Add to bookshelf" >
+                <IconButton sx={{}} aria-label="Add to bookshelf" onClick={handlePlus}>
                   <AddIcon />
                 </IconButton>
             </Card>
@@ -123,6 +122,19 @@ return (
         </Box>
   );
 }
-
+}
 export default BookTile;
 
+
+
+  // const handleHearts = async (updatedBook) => {
+  //   const response = await fetch(`/books/${id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(updatedBook),
+  //   })
+  //   const data = await response.json()
+  //   handleHearts(data)
+  // }
