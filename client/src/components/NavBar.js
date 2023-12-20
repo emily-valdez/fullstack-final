@@ -8,7 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 
-function NavBar({user, setUser}){
+function NavBar({isLoggedIn, setIsLoggedIn}){
   const navigate = useNavigate()
 
   function handleLogout() {
@@ -16,8 +16,8 @@ function NavBar({user, setUser}){
       method: 'DELETE'
     }).then((resp) => {
       if (resp.ok) {
-        navigate('/logout')
-        setUser(null)
+        // navigate('/')
+        setIsLoggedIn(null)
         navigate('/')
       }
     })
@@ -40,7 +40,7 @@ function NavBar({user, setUser}){
               variant="h5"
               noWrap
               component="a"
-              // href=""
+              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'flex' },
@@ -97,28 +97,34 @@ function NavBar({user, setUser}){
               }}>
               F.A.Q.
             </Typography>
-            <Typography variant="h6" 
-              component="a"
-              href="/" 
-              sx={{
-               flexGrow: .15,
-               fontFamily: 'Segoe UI',
-               color: 'inherit', 
-               textDecoration: 'none'
-              }}> 
-              Login / Register
-            </Typography>
-            <Typography variant="h6" 
-              component="a"
-              href="/logout" onClick={handleLogout}
-              sx={{
-               flexGrow: .15,
-               fontFamily: 'Segoe UI',
-               color: 'inherit', 
-               textDecoration: 'none'
-              }}> 
-              Logout
-            </Typography>
+            {!isLoggedIn ? (
+            <> 
+              <Typography variant="h6" 
+                component="a"
+                href="/" 
+                sx={{
+                flexGrow: .15,
+                fontFamily: 'Segoe UI',
+                color: 'inherit', 
+                textDecoration: 'none'
+                }}> 
+                Login / Register
+              </Typography>
+            </> ) : (
+            <>
+              <Typography variant="h6" 
+                component="a"
+                href="/" onClick={handleLogout}
+                sx={{
+                flexGrow: .15,
+                fontFamily: 'Segoe UI',
+                color: 'inherit', 
+                textDecoration: 'none'
+                }}> 
+                Logout
+              </Typography>
+            </> )
+            }
           </Toolbar>
         </Container>
       </AppBar>

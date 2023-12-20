@@ -75,7 +75,7 @@ function Bookshelf({id}) {
               justifyContent="center"
             >
               <Button sx={{ bgcolor: 'black'}} href="/books" variant="contained">See all Books</Button>
-              <Button variant="outlined">Add a New Book</Button>
+              <Button href="/addbook" variant="outlined">Add a New Book</Button>
             </Stack>
           </Container>
         </Box>

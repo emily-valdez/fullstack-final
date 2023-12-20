@@ -4,11 +4,10 @@ import Authors from "./components/Authors"
 import Images from "./components/Images"
 import Users from "./components/Users"
 import Bookshelf from "./components/Bookshelf";
-import Logout from "./components/Logout";
 import Books from "./components/Books"
 import Register from "./components/Register"
 import FAQ from "./components/FAQ"
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { createRoot } from "react-dom/client";
@@ -25,10 +24,13 @@ const routes = [
         path:"/",
         element: <App/>,
         children: [
-            { index: true, element: <Register />},
+            // { index: true, element: <Header />},
             {
                 path: "/books",
                 element: <Books />
+            },{
+                path: "/",
+                element: <Register />
             },{
                 path: "/authors",
                 element: <Authors />
@@ -38,9 +40,6 @@ const routes = [
             },{
                 path: "/faq",
                 element: <FAQ />
-            },{
-                path: "/logout",
-                element: <Logout />
             },{
                 path: "/addbook",
                 element: <NewBook />

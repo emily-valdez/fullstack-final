@@ -1,5 +1,6 @@
 import React from "react"
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
     title: "",
@@ -8,9 +9,11 @@ const initialState = {
     image: ""
 }
 
+
 function NewBook({onNewBook}) {
    const [formData, setFormData] = useState(initialState)
    const {title, author, year, image} = formData
+   const navigate = useNavigate();
 
    function handleChange(event) {
     setFormData((currentFormData) => {
@@ -34,6 +37,7 @@ function NewBook({onNewBook}) {
       .then((resp) => {
         if (resp.ok) {
           return resp.json();
+        //   navigate("/books")
         } else {
           throw Error("New book not created.");
         }

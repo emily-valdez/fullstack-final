@@ -3,17 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Outlet } from "react-router-dom";
 
-import Books from "./Books"
 import Register from "./Register"
 import NavBar from "./NavBar"
-import Authors from "./Authors"
-import Bookshelf from "./Bookshelf"
-import FAQ from "./FAQ"
-import Logout from "./Logout"
+
 
 function App() {
   const [user, setUser] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(null)
   const navigate = useNavigate()
+
+  // const loggedin = () => {
+  //   setIsLoggedIn(true)
+  // }
+  // const loggedout = () => {
+  //   setIsLoggedIn(false)
+  // }
 
 const black_theme = createTheme({
   palette: {
@@ -36,7 +40,7 @@ const black_theme = createTheme({
     fetch('/authorized')
     .then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) => setUser(user))
+        resp.json().then((user) => setIsLoggedIn(user))
       } else {
           resp.json().then(() => navigate('/')) 
           console.log('error')
@@ -44,17 +48,17 @@ const black_theme = createTheme({
     })
   }, [])
 
-  function handleLogout() {
-    fetch('/logout', {
-      method: 'DELETE'
-    }).then((resp) => {
-      if (resp.ok) {
-        navigate('/logout')
-        setUser(null)
-        navigate('/')
-      }
-    })
-  }
+  // function handleLogout() {
+  //   fetch('/logout', {
+  //     method: 'DELETE'
+  //   }).then((resp) => {
+  //     if (resp.ok) {
+  //       navigate('/logout')
+  //       setUser(null)
+  //       navigate('/')
+  //     }
+  //   })
+  // }
 
   if (!user) {
     return <Register setUser={setUser} />
@@ -62,12 +66,14 @@ const black_theme = createTheme({
 
   const context = {
     user,
-    setUser
+    setUser,
+    isLoggedIn,
+    setIsLoggedIn
   }
 
   return <div>
     <ThemeProvider theme={black_theme}>
-      <NavBar user={user} setUser={setUser}/>
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Outlet context={context}/>
     </ThemeProvider >
   </div>

@@ -67,6 +67,23 @@ class Books (Resource):
         book_list = [n.to_dict() for n in Book.query.all()]
         response = make_response(book_list, 200)
         return response
+
+    # def post(self):
+    #     data = request.json
+    #     try:
+    #         newBook = Book(
+    #             title = data['title'],
+    #             year = data['year'],
+    #             heart_count = 0,
+    #             pepper_count = 0,
+    #             author_id = [],
+    #             book_img = data['image']
+    #         )
+    #         db.session.add(newBook)
+    #         db.session.commit()
+    #         return make_response(newBook.to_dict), 202
+    #     except ValueError:
+    #         return make_response({"error", 404})
 api.add_resource(Books, '/api/v1/books')
 
 class BooksById (Resource):

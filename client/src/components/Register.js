@@ -27,7 +27,7 @@ const black_theme = createTheme({
 function Register() {
     const [signup, setSignup] = useState(true)
     const [error, setError] = useState(null)
-    const {user, setUser} = useOutletContext()
+    const {isLoggedIn, setIsLoggedIn} = useOutletContext()
     const navigate = useNavigate();
 
     const signupSchema = yup.object().shape({
@@ -60,7 +60,7 @@ function Register() {
             }).then((resp) => {
                 if (resp.ok) {
                     resp.json().then(({ user }) => {
-                        setUser(user)
+                        setIsLoggedIn(user)
                         setError(null)
                         navigate("/books")
                     })
